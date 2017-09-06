@@ -2,14 +2,14 @@ var canvas = document.querySelector('.the-canvas');
 var context = canvas.getContext('2d');
 var ratio = window.devicePixelRatio || 1;
 
-var totalLineHeight = 680;
+var totalLineHeight = 1280;
 var totalLines = 4;
 var totalDiff = totalLineHeight / totalLines;
-var fontHeight = 30 * ratio - 50; // Small centering
+var fontHeight = 400 + ratio - 50; // Small centering
 
 var smallestWidth = 280; // width of smallest line;
-var offsetX = 3;
-var offsetY = 3;
+var offsetX = 6;
+var offsetY = 6;
 var iterations;
 var verticalAlign,
   line1Diff,
@@ -35,12 +35,12 @@ function init() {
   canvas.height = window.innerHeight * ratio;
 
   // Set the canvas font properties
-  if (window.innerWidth < 800) {
-    context.font = '20vw Changa';
-  } else {
-    context.font = '150px Changa';
-  }
-  context.textAlign = 'center';
+  // if (window.innerWidth < 800) {
+  context.font = '20vw Changa';
+  // } else {
+  // context.font = '150px Changa';
+  // }
+  // context.textAlign = 'center';
   context.fillStyle = '#fff';
   context.strokeStyle = 'rgb(243, 92, 92)';
   context.lineWidth = '1';
@@ -49,15 +49,10 @@ function init() {
   // Centering of the text
   verticalAlign = window.innerHeight / 2 * ratio - totalLineHeight / 2;
   line1Diff = totalLineHeight + fontHeight - totalDiff;
-  if (window.innerWidth < 500) {
-    line2Diff = totalLineHeight + fontHeight - totalDiff * 1.75;
-    line3Diff = totalLineHeight + fontHeight - totalDiff * 2.5;
-    line4Diff = totalLineHeight + fontHeight - totalDiff * 3.25;
-  } else {
-    line2Diff = totalLineHeight + fontHeight - totalDiff * 2;
-    line3Diff = totalLineHeight + fontHeight - totalDiff * 3;
-    line4Diff = totalLineHeight + fontHeight - totalDiff * 4;
-  }
+
+  line2Diff = totalLineHeight + fontHeight - totalDiff * 2;
+  line3Diff = totalLineHeight + fontHeight - totalDiff * 3;
+  line4Diff = totalLineHeight + fontHeight - totalDiff * 4;
 
   // How many iterations will we go through?
   // iterations = Math.floor(
@@ -84,8 +79,8 @@ function draw() {
       ',' +
       fullColorSet[i][2] +
       ')';
-    var x = window.innerWidth / 2 * ratio - i * offsetX;
-    var y = verticalAlign + i * offsetY + Math.sin(i + iteration) * 2;
+    var x = 20 + ratio - i * offsetX;
+    var y = verticalAlign + i * offsetY + Math.sin(i + iteration) * 5;
     drawText(x, y);
   }
 

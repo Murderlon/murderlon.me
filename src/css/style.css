@@ -2,55 +2,79 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  margin: 0px;
+html {
   width: 100%;
-  font-size: calc(112.5% + 0.25vw);
+  font-size: calc(100% + 0.25vw);
   font-family: 'Fira Sans';
+}
+body {
+  margin: 0;
+}
+
+div {
+  padding: 5em 0;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 44.8rem) 2fr 1fr;
+  background: rgb(244, 244, 244);
 }
 
 header {
   width: 100%;
   position: relative;
+  grid-column: 2/span 1;
 }
 
 canvas {
   width: 100%;
-  height: 100vh;
-  background: rgb(244, 244, 244);
+  /* height: 100vh; */
+}
+
+main {
+  padding: 0 11.2em;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 44.8rem) 2fr 1fr;
+}
+
+section {
+  grid-column: 2/span 1;
 }
 
 img {
   width: 100%;
 }
 
-h2 {
-  font-size: 2rem;
-  color: rgb(243, 92, 92);
-}
-
-h1,
-h2,
-h3,
+/* 3:4 - Perfect Fourth */
 h4 {
+  font-size: 1.333em;
   font-family: 'Changa';
-  line-height: 1.3;
-  margin: 1rem;
+}
+h3 {
+  font-size: 1.777em;
+  font-family: 'Changa';
+  margin: 0;
+}
+h2 {
+  font-size: 2.369em;
+  font-family: 'Changa';
+  margin: 0;
+}
+h1 {
+  font-size: 3.157em;
+  font-family: 'Changa';
+  color: rgb(243, 92, 92);
+  margin: 0;
 }
 
-p {
-  margin: 1rem;
+a {
+  color: black;
 }
 
 .me {
-  width: 5rem;
-  left: 0;
-  right: 0;
-  top: 1em;
-  margin: auto;
-  border-radius: 50%;
   position: absolute;
-  box-shadow: 10px 10px 20px -10px grey;
+  top: -2em;
+  width: 20%;
+  max-width: 7em;
+  border-radius: 50%;
+  box-shadow: -10px 10px 20px -10px grey;
   border: 0.2em solid #f0a5a3;
 }
