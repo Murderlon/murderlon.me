@@ -7,62 +7,95 @@ html {
   font-size: calc(100% + 0.25vw);
   font-family: 'Fira Sans';
 }
+
 body {
   margin: 0;
 }
 
-div {
-  padding: 5em 0;
-  display: grid;
-  grid-template-columns: 1fr minmax(auto, 44.8rem) 2fr 1fr;
+header {
   background: rgb(244, 244, 244);
+  padding: 1em;
 }
 
-header {
-  width: 100%;
+div {
   position: relative;
-  grid-column: 2/span 1;
+}
+
+@media screen and (min-width: 50em) {
+  header {
+    padding: 5em 0;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 40rem) 2fr 1fr;
+  }
+  div {
+    padding: 0;
+    grid-column: 2/span 1;
+  }
+  .me {
+    position: static !important;
+    margin-bottom: 1em;
+  }
 }
 
 canvas {
   width: 100%;
-  /* height: 100vh; */
 }
 
 main {
-  padding: 0 11.2em;
-  display: grid;
-  grid-template-columns: 1fr minmax(auto, 44.8rem) 2fr 1fr;
+  padding: 0 2em;
 }
 
-section {
-  grid-column: 2/span 1;
+@media screen and (min-width: 50em) {
+  main {
+    padding: 0 11.2em;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 30rem) 2fr 1fr;
+  }
+  section {
+    grid-column: 2/span 1;
+  }
 }
 
-img {
-  width: 100%;
-}
-
-/* 3:4 - Perfect Fourth */
-h4 {
-  font-size: 1.333em;
-  font-family: 'Changa';
-}
-h3 {
-  font-size: 1.777em;
-  font-family: 'Changa';
-  margin: 0;
-}
+/* 2:3 - Perfect Fifth */
 h2 {
-  font-size: 2.369em;
+  font-size: 1.5em;
   font-family: 'Changa';
   margin: 0;
 }
 h1 {
-  font-size: 3.157em;
+  font-size: 2.25em;
   font-family: 'Changa';
-  color: rgb(243, 92, 92);
   margin: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-size: 0.7em;
+  color: grey;
+}
+
+blockquote {
+  position: relative;
+  font-style: italic;
+}
+
+blockquote::after {
+  content: '\201C';
+  color: grey;
+  font-size: 7.5em;
+  opacity: 0.3;
+  position: absolute;
+  top: -.4em;
+  left: -.2em;
+  text-shadow: none;
+  z-index: -300;
+}
+
+img {
+  width: 100%;
 }
 
 a {
@@ -71,8 +104,8 @@ a {
 
 .me {
   position: absolute;
-  top: -2em;
-  width: 20%;
+  grid-column: 2/span 1;
+  width: 25%;
   max-width: 7em;
   border-radius: 50%;
   box-shadow: -10px 10px 20px -10px grey;

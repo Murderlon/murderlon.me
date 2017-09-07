@@ -2,23 +2,16 @@ var canvas = document.querySelector('.the-canvas');
 var context = canvas.getContext('2d');
 var ratio = window.devicePixelRatio || 1;
 
-var totalLineHeight = 1280;
-var totalLines = 4;
-var totalDiff = totalLineHeight / totalLines;
-var fontHeight = 400 + ratio - 50; // Small centering
-
 var smallestWidth = 280; // width of smallest line;
-var offsetX = 6;
-var offsetY = 6;
 var iterations;
-var verticalAlign,
-  line1Diff,
-  line2Diff,
-  line3Diff,
-  line4Diff,
-  iterations,
-  iteration,
-  animationFrame;
+var verticalAlign;
+var line1Diff;
+var line2Diff;
+var line3Diff;
+var line4Diff;
+var iterations;
+var iteration;
+var animationFrame;
 
 var startRGB = [255, 255, 255];
 var endRGB = [220, 165, 163];
@@ -27,20 +20,23 @@ var fullColorSet = [];
 init();
 
 function init() {
+  var totalLineHeight = window.innerWidth;
+  var totalLines = 4;
+  var totalDiff = totalLineHeight / totalLines;
+
   // Cancel any already running animations
   cancelAnimationFrame(animationFrame);
 
   // Set the canvas width and height
   canvas.width = window.innerWidth * ratio;
-  canvas.height = window.innerHeight * ratio;
+  canvas.height = window.innerHeight / 1.2 * ratio;
 
   // Set the canvas font properties
-  // if (window.innerWidth < 800) {
-  context.font = '20vw Changa';
-  // } else {
-  // context.font = '150px Changa';
-  // }
-  // context.textAlign = 'center';
+  if (window.innerWidth < 600) {
+    context.font = '25vw Changa';
+  } else {
+    context.font = '20vw Changa';
+  }
   context.fillStyle = '#fff';
   context.strokeStyle = 'rgb(243, 92, 92)';
   context.lineWidth = '1';
@@ -48,16 +44,12 @@ function init() {
 
   // Centering of the text
   verticalAlign = window.innerHeight / 2 * ratio - totalLineHeight / 2;
-  line1Diff = totalLineHeight + fontHeight - totalDiff;
+  line1Diff = totalLineHeight + ratio - totalDiff;
 
-  line2Diff = totalLineHeight + fontHeight - totalDiff * 2;
-  line3Diff = totalLineHeight + fontHeight - totalDiff * 3;
-  line4Diff = totalLineHeight + fontHeight - totalDiff * 4;
+  line2Diff = totalLineHeight + ratio - totalDiff * 2;
+  line3Diff = totalLineHeight + ratio - totalDiff * 3;
+  line4Diff = totalLineHeight + ratio - totalDiff * 4;
 
-  // How many iterations will we go through?
-  // iterations = Math.floor(
-  //   (window.innerWidth * ratio / 2 - smallestWidth * ratio / 2) / offsetX + 5
-  // );
   iterations = 7; // Let's keep it simple for now
   prepareColorSets(iterations);
 
@@ -79,8 +71,9 @@ function draw() {
       ',' +
       fullColorSet[i][2] +
       ')';
-    var x = 20 + ratio - i * offsetX;
-    var y = verticalAlign + i * offsetY + Math.sin(i + iteration) * 5;
+    var x = 20 + ratio - i * window.innerWidth / 200;
+    var y =
+      verticalAlign + i * window.innerWidth / 200 + Math.sin(i + iteration) * 3;
     drawText(x, y);
   }
 
