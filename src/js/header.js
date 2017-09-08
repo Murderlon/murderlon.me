@@ -1,9 +1,10 @@
+var debounce = require('lodash/debounce');
+
 var canvas = document.querySelector('.the-canvas');
 var context = canvas.getContext('2d');
 var ratio = window.devicePixelRatio || 1;
 
 var smallestWidth = 280; // width of smallest line;
-var iterations;
 var verticalAlign;
 var line1Diff;
 var line2Diff;
@@ -20,7 +21,7 @@ var fullColorSet = [];
 init();
 
 function init() {
-  var totalLineHeight = window.innerWidth;
+  var totalLineHeight = window.innerWidth - 100;
   var totalLines = 4;
   var totalDiff = totalLineHeight / totalLines;
 
@@ -71,7 +72,7 @@ function draw() {
       ',' +
       fullColorSet[i][2] +
       ')';
-    var x = 20 + ratio - i * window.innerWidth / 200;
+    var x = 30 + ratio - i * window.innerWidth / 200;
     var y =
       verticalAlign + i * window.innerWidth / 200 + Math.sin(i + iteration) * 3;
     drawText(x, y);
@@ -117,4 +118,4 @@ function colourGradientor(p, rgb_beginning, rgb_end) {
   return rgb;
 }
 
-window.onresize = init;
+window.onresize = debounce(init, 250);
