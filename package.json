@@ -1,11 +1,23 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Personal website",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "build:js": "browserify src/js/header.js | uglifyjs > dist/header.min.js",
+    "watch:js":
+      "watchify src/js/header.js -o 'uglifyjs -cm > dist/header.min.js'"
   },
   "author": "Merlijn Vos",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "lodash": "^4.17.4",
+    "uglify-js": "^3.0.28",
+    "watchify": "^3.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-prettier": "^2.4.0"
+  }
 }
