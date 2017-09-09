@@ -4,22 +4,16 @@
   "description": "Personal website",
   "scripts": {
     "start": "npm run build && open dist/index.html",
-    "dev":
-      "concurrently 'browser-sync start --server 'dist' --files 'dist'' 'npm run watch'",
+    "dev": "concurrently 'browser-sync start --server 'dist' --files 'dist'' 'npm run watch'",
     "lint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "build":
-      "mkdir -p dist/js dist/css dist/images && npm run build:js && npm run build:css && npm run build:html && npm run build:images",
+    "build": "mkdir -p dist/js dist/css dist/images && npm run build:js && npm run build:css && npm run build:html && npm run build:images",
     "build:js": "browserify src/js/header.js | uglifyjs > dist/js/header.js",
-    "build:css":
-      "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js",
-    "build:html":
-      "cat src/index.html | critical --base src --inline --minify > dist/index.html",
+    "build:css": "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js",
+    "build:html": "cat src/index.html | critical --base src --inline --minify > dist/index.html",
     "build:images": "imagemin src/images/* --out-dir=dist/images",
     "watch": "concurrently 'npm run watch:js' 'npm run watch:css'",
-    "watch:js":
-      "watchify src/js/header.js -o 'uglifyjs -cm > dist/header.min.js'",
-    "watch:css":
-      "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js -w"
+    "watch:js": "watchify src/js/header.js -o 'uglifyjs -cm > dist/header.min.js'",
+    "watch:css": "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js -w"
   },
   "author": "Merlijn Vos",
   "license": "MIT",
@@ -33,7 +27,6 @@
     "critical": "^0.9.1",
     "eslint": "^4.6.1",
     "eslint-config-prettier": "^2.4.0",
-    "html-minifier": "^3.5.3",
     "imagemin-cli": "^3.0.0",
     "postcss-clean": "^1.0.3",
     "postcss-cli": "^4.1.1",
