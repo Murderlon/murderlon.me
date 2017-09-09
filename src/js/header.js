@@ -24,20 +24,22 @@ var animationFrame;
 init();
 
 function init() {
+  var width = canvas.getBoundingClientRect().width;
+  var height = canvas.getBoundingClientRect().height;
   var totalLineHeight;
   var totalDiff;
   // Cancel any already running animations
   cancelAnimationFrame(animationFrame);
 
   // Set the canvas width and height
-  canvas.width = canvas.getBoundingClientRect().width * ratio;
-  canvas.height = canvas.getBoundingClientRect().height * ratio;
+  canvas.width = width * ratio;
+  canvas.height = height * ratio;
 
   // Set the canvas font properties
-  if (canvas.getBoundingClientRect().width < 500) {
+  if (width < 500) {
     context.font = '4em Changa';
     totalLineHeight = 400;
-  } else if (canvas.getBoundingClientRect().width < 700) {
+  } else if (width < 700) {
     context.font = '5em Changa';
     totalLineHeight = 500;
   } else {

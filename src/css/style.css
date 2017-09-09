@@ -49,6 +49,12 @@ canvas {
   min-height: 40vh;
 }
 
+canvas h1 {
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
+}
+
 main {
   margin: 2em 0;
   padding: 0 2em;
@@ -148,5 +154,4 @@ li img {
   min-height: 5em;
   border-radius: 50%;
   box-shadow: -10px 10px 20px -10px var(--black);
-  /* border: 0.2em solid var(--black); */
 }
