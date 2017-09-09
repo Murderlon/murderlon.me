@@ -3,8 +3,15 @@ var debounce = require('lodash/debounce');
 var canvas = document.querySelector('.the-canvas');
 var context = canvas.getContext('2d');
 var ratio = window.devicePixelRatio || 1;
-
+var totalLines = 4;
+var fontHeight = 60 * ratio - 50; // Small centering
 var smallestWidth = 280; // width of smallest line;
+var offsetX = 4;
+var offsetY = 4;
+var startRGB = [255, 255, 255];
+var endRGB = [220, 165, 163];
+var fullColorSet = [];
+
 var verticalAlign;
 var line1Diff;
 var line2Diff;
@@ -14,44 +21,46 @@ var iterations;
 var iteration;
 var animationFrame;
 
-var startRGB = [255, 255, 255];
-var endRGB = [220, 165, 163];
-var fullColorSet = [];
-
 init();
 
 function init() {
-  var totalLineHeight = window.innerWidth - 100;
-  var totalLines = 4;
-  var totalDiff = totalLineHeight / totalLines;
-
+  var totalLineHeight;
+  var totalDiff;
   // Cancel any already running animations
   cancelAnimationFrame(animationFrame);
 
   // Set the canvas width and height
-  canvas.width = window.innerWidth * ratio;
-  canvas.height = window.innerHeight / 1.2 * ratio;
+  canvas.width = canvas.getBoundingClientRect().width * ratio;
+  canvas.height = canvas.getBoundingClientRect().height * ratio;
 
   // Set the canvas font properties
-  if (window.innerWidth < 600) {
-    context.font = '25vw Changa';
+  if (canvas.getBoundingClientRect().width < 500) {
+    context.font = '4em Changa';
+    totalLineHeight = 400;
+  } else if (canvas.getBoundingClientRect().width < 700) {
+    context.font = '5em Changa';
+    totalLineHeight = 500;
   } else {
-    context.font = '20vw Changa';
+    context.font = '7em Changa';
+    totalLineHeight = 700;
   }
-  context.fillStyle = '#fff';
-  context.strokeStyle = 'rgb(243, 92, 92)';
-  context.lineWidth = '1';
+  context.weight = '400';
+  context.fillStyle = 'black';
+  context.strokeStyle = 'black';
+  context.lineWidth = '2';
   context.textBaseline = 'middle';
 
+  totalDiff = totalLineHeight / totalLines;
+
   // Centering of the text
-  verticalAlign = window.innerHeight / 2 * ratio - totalLineHeight / 2;
-  line1Diff = totalLineHeight + ratio - totalDiff;
+  verticalAlign = canvas.height / 4 * ratio - totalLineHeight / 2;
+  line1Diff = totalLineHeight + fontHeight - totalDiff;
+  line2Diff = totalLineHeight + fontHeight - totalDiff * 2;
+  line3Diff = totalLineHeight + fontHeight - totalDiff * 3;
+  line4Diff = totalLineHeight + fontHeight - totalDiff * 4;
 
-  line2Diff = totalLineHeight + ratio - totalDiff * 2;
-  line3Diff = totalLineHeight + ratio - totalDiff * 3;
-  line4Diff = totalLineHeight + ratio - totalDiff * 4;
-
-  iterations = 7; // Let's keep it simple for now
+  // How many iterations will we go through?
+  iterations = 7;
   prepareColorSets(iterations);
 
   iteration = 0;
@@ -72,9 +81,8 @@ function draw() {
       ',' +
       fullColorSet[i][2] +
       ')';
-    var x = 30 + ratio - i * window.innerWidth / 200;
-    var y =
-      verticalAlign + i * window.innerWidth / 200 + Math.sin(i + iteration) * 3;
+    var x = 40 - ratio - i * offsetX;
+    var y = verticalAlign + i * offsetY + Math.sin(i + iteration) * 2;
     drawText(x, y);
   }
 
