@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
+  "name": "murderlon.me",
   "version": "1.0.0",
-  "description": "Personal website",
+  "description": "Portfolio website",
   "scripts": {
     "start": "npm run build && node server.js",
     "dev":
