@@ -47,8 +47,8 @@ function init() {
     totalLineHeight = 700;
   }
   context.weight = '400';
-  context.fillStyle = 'black';
-  context.strokeStyle = 'black';
+  context.fillStyle = '#323031';
+  context.strokeStyle = '#323031';
   context.lineWidth = '2';
   context.textBaseline = 'middle';
 
