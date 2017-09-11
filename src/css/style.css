@@ -47,6 +47,7 @@ div {
 canvas {
   width: 100%;
   min-height: 40vh;
+  margin: 1em 0;
 }
 
 canvas h1 {
@@ -136,9 +137,9 @@ ul {
   padding: 0;
 }
 
-.experience ul {
-  position: relative;
+.experience li {
   padding-left: 3.3em;
+  position: relative;
 }
 
 li {
@@ -152,9 +153,10 @@ li p {
 li svg,
 li img {
   position: absolute;
+  top: 0;
   left: 0;
   width: 2.8em;
-  height: inherit;
+  height: 2.8em;
 }
 
 .me {
