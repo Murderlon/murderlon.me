@@ -3,17 +3,23 @@
   "version": "1.0.0",
   "description": "Portfolio website",
   "scripts": {
-    "start": "npm run build && node server.js",
-    "dev": "concurrently 'nodemon server.js' 'browser-sync start --proxy 'http://localhost:4000' --port '5000'' 'npm run watch'",
+    "start": "node server.js",
+    "dev":
+      "concurrently 'nodemon server.js' 'browser-sync start --proxy 'http://localhost:4000' --port '5000'' 'npm run watch'",
     "lint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "build": "mkdir -p dist/js dist/css dist/images && npm run build:js && npm run build:css && npm run build:html && npm run build:images",
+    "build":
+      "mkdir -p dist/js dist/css dist/images && npm run build:js && npm run build:css && npm run build:html && npm run build:images",
     "build:js": "browserify src/js/header.js | uglifyjs > dist/js/header.js",
-    "build:css": "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js",
-    "build:html": "cat src/index.html | critical --base src --inline --minify > dist/index.html",
+    "build:css":
+      "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js",
+    "build:html":
+      "cat src/index.html | critical --base src --inline --minify > dist/index.html",
     "build:images": "imagemin src/images/* --out-dir=dist/images",
     "watch": "concurrently 'npm run watch:js' 'npm run watch:css'",
-    "watch:js": "watchify src/js/header.js -o 'uglifyjs -cm > dist/js/header.js'",
-    "watch:css": "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js -w"
+    "watch:js":
+      "watchify src/js/header.js -o 'uglifyjs -cm > dist/js/header.js'",
+    "watch:css":
+      "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js -w"
   },
   "repository": "Murderlon/murderlon.me",
   "author": "Merlijn Vos",
