@@ -2,7 +2,7 @@ var debounce = require('lodash/debounce');
 
 var canvas = document.querySelector('.the-canvas');
 var context = canvas.getContext('2d');
-var ratio = window.devicePixelRatio || 1;
+var ratio = 2; // calculate as if x times bigger for higher quality
 var totalLines = 4;
 var fontHeight = 60 * ratio - 50; // Small centering
 var smallestWidth = 280; // width of smallest line;
