@@ -21,8 +21,11 @@
     "watch:css":
       "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js -w"
   },
+  "repository": "Murderlon/murderlon.me",
   "author": "Merlijn Vos",
   "license": "MIT",
+  "bugs": "https://github.com/Murderlon/murderlon.me/issues",
+  "homepage": "https://github.com/Murderlon/murderlon.me#readme",
   "dependencies": {
     "compression": "^1.7.0",
     "express": "^4.15.4",
