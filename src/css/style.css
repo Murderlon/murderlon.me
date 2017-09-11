@@ -47,8 +47,9 @@ div {
 
 canvas {
   width: 100%;
-  /* min-height: 40vh; */
   margin: 1em 0;
+  min-height: 15em;
+  max-height: 25em;
 }
 
 canvas h1 {
