@@ -1,28 +1,20 @@
-require('dotenv').config();
-const path = require('path');
-const express = require('express');
-const compression = require('compression');
-const bodyParser = require('body-parser');
-const sendgrid = require('@sendgrid/mail');
+const fastify = require('fastify');
+const Next = require('next');
 
-const app = express();
-const port = process.env.PORT || 4000;
+const port = parseInt(process.env.PORT, 10) || 3000;
+const dev = process.env.NODE_ENV !== 'production';
+const app = Next({ dev });
+const handle = app.getRequestHandler();
 
-app
-  .use(compression({threshold: 0, filter: () => true}))
-  .use(express.static(path.join(__dirname, '/dist')))
-  .use(bodyParser.urlencoded({extended: false}))
-  .post('/', handleEmail)
-  .listen(port, () => console.log(`Running on http://localhost:${port}`));
+app.prepare().then(() => {
+  const server = fastify();
 
-function handleEmail(req, res) {
-  sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-  const msg = {
-    to: {email: 'hello@murderlon.me'},
-    from: req.body.email,
-    subject: req.body.subject,
-    text: req.body.message
-  };
-  sendgrid.send(msg);
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-}
+  server.get('/', (req, res) => {
+    return app.render(req.req, res.res, '/', req.query);
+  });
+
+  server.listen(port, err => {
+    if (err) throw err;
+    console.log(`> Ready on http://localhost:${port}`);
+  });
+});

@@ -1,53 +1,21 @@
 {
   "name": "murderlon.me",
   "version": "1.0.0",
-  "description": "Portfolio website",
   "scripts": {
-    "start": "node server.js",
-    "dev":
-      "concurrently 'nodemon server.js' 'browser-sync start --proxy 'http://localhost:4000' --port '5000'' 'npm run watch'",
-    "lint": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "build":
-      "mkdir -p dist/js dist/css dist/images && npm run build:js && npm run build:css && npm run build:html && npm run build:images",
-    "build:js": "browserify src/js/header.js | uglifyjs > dist/js/header.js",
-    "build:css":
-      "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js",
-    "build:html":
-      "cat src/index.html | critical --base src --inline --minify > dist/index.html",
-    "build:images": "imagemin src/images/* --out-dir=dist/images",
-    "watch": "concurrently 'npm run watch:js' 'npm run watch:css'",
-    "watch:js":
-      "watchify src/js/header.js -o 'uglifyjs -cm > dist/js/header.js'",
-    "watch:css":
-      "./node_modules/.bin/postcss src/css/*.css -d dist/css -c postcss.config.js -w"
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
   },
-  "repository": "Murderlon/murderlon.me",
-  "author": "Merlijn Vos",
-  "license": "MIT",
-  "bugs": "https://github.com/Murderlon/murderlon.me/issues",
-  "homepage": "https://github.com/Murderlon/murderlon.me#readme",
   "dependencies": {
-    "@sendgrid/mail": "^6.1.2",
-    "body-parser": "^1.18.0",
-    "compression": "^1.7.0",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.4",
-    "lodash": "^4.17.4"
+    "babel-plugin-emotion": "^8.0.10",
+    "emotion": "^8.0.10",
+    "emotion-server": "^8.0.10",
+    "emotion-theming": "^8.0.10",
+    "fastify": "^0.33.0",
+    "next": "^4.1.4",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "react-emotion": "^8.0.10"
   },
-  "devDependencies": {
-    "browser-sync": "^2.18.13",
-    "browserify": "^14.4.0",
-    "concurrently": "^3.5.0",
-    "critical": "^0.9.1",
-    "eslint": "^4.6.1",
-    "eslint-config-prettier": "^2.4.0",
-    "imagemin-cli": "^3.0.0",
-    "postcss-clean": "^1.0.3",
-    "postcss-cli": "^4.1.1",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-import": "^10.0.0",
-    "postcss-url": "^7.1.2",
-    "uglify-js": "^3.0.28",
-    "watchify": "^3.9.0"
-  }
+  "license": "MIT"
 }
