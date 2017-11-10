@@ -1,5 +1,39 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { extractCritical } from 'emotion-server';
+import { injectGlobal } from 'react-emotion';
+
+injectGlobal`
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    width: 100%;
+    font-size: calc(100% + 0.25vw);
+    font-family: 'Fira Sans', 'Roboto', 'Helvetica', sans-serif;
+    font-display: swap;
+  }
+  body {
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.5em;
+    font-family: 'Changa', 'Roboto', 'Helvetica', sans-serif;
+    font-display: swap;
+    font-weight: 500;
+    margin: 0;
+  }
+  h1 {
+    font-size: 2.25em;
+    font-family: 'Changa', 'Roboto', 'Helvetica', sans-serif;
+    font-display: swap;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0;
+  }
+  p {
+    line-height: 1.3;
+  }
+`;
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
