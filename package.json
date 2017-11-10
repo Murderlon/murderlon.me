@@ -8,12 +8,11 @@
   "homepage": "https://github.com/Murderlon/murderlon.me#readme",
   "license": "MIT",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "next start"
   },
   "dependencies": {
-    "babel-plugin-emotion": "^8.0.10",
     "emotion": "^8.0.10",
     "emotion-server": "^8.0.10",
     "emotion-theming": "^8.0.10",
@@ -24,6 +23,10 @@
     "react-emotion": "^8.0.10"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "babel-plugin-emotion": "^8.0.10",
+    "eslint": "^4.10.0",
+    "eslint-config-prettier": "^2.7.0",
     "webpack": "^3.8.1"
   }
 }

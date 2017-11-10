@@ -1,3 +1,7 @@
 {
-  "extends": ["prettier"]
+  "extends": ["standard", "prettier"],
+  "parser": "babel-eslint",
+  "rules": {
+    "jsx-quotes": ["error", "prefer-single"]
+  }
 }
