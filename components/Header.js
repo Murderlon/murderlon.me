@@ -1,11 +1,21 @@
 import React from 'react';
-import { func } from 'prop-types';
+import { array } from 'prop-types';
 import styled from 'react-emotion';
 
 const StyledHeader = styled.header`
   background: ${props => props.theme.red};
   padding: 1em;
   padding-bottom: 0;
+
+  img {
+    grid-column: 2/span 1;
+    width: 25%;
+    max-width: 7em;
+    min-width: 5em;
+    min-height: 5em;
+    border-radius: 50%;
+    box-shadow: -10px 10px 20px -10px var(--black);
+  }
 
   @media screen and (min-width: 50em) {
     header {
@@ -28,7 +38,7 @@ const Header = ({ children }) => {
 };
 
 Header.propTypes = {
-  children: func.isRequired
+  children: array.isRequired
 };
 
 export default Header;
