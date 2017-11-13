@@ -10,13 +10,15 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint components/ pages/ themes/"
   },
   "dependencies": {
     "emotion": "^8.0.10",
     "emotion-server": "^8.0.10",
     "emotion-theming": "^8.0.10",
     "fastify": "^0.33.0",
+    "lodash.debounce": "^4.0.8",
     "next": "^4.1.4",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
@@ -27,6 +29,12 @@
     "babel-plugin-emotion": "^8.0.10",
     "eslint": "^4.10.0",
     "eslint-config-prettier": "^2.7.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.8.2",
     "webpack": "^3.8.1"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }

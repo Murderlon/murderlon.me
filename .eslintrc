@@ -1,7 +1,18 @@
 {
-  "extends": ["standard", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "plugins": ["prettier", "react"],
   "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
-    "jsx-quotes": ["error", "prefer-single"]
+    "prettier/prettier": 2,
+    "react/no-unescaped-entities": 0
   }
 }

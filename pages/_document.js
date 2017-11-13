@@ -1,3 +1,4 @@
+import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { extractCritical } from 'emotion-server';
 import { injectGlobal } from 'react-emotion';
@@ -54,7 +55,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <meta charset="UTF-8" />
+          <meta charSet="UTF-8" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
@@ -90,19 +91,23 @@ export default class MyDocument extends Document {
           <link
             rel="shortcut icon"
             type="image/png"
-            href="images/favicon32.ico"
+            href="static/images/favicon32.ico"
           />
-          <link rel="icon" type="image/png" href="images/favicon32.ico" />
           <link
             rel="icon"
             type="image/png"
-            href="images/favicon32.png"
+            href="static/images/favicon32.ico"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="static/images/favicon32.png"
             sizes="32x32"
           />
           <link
             rel="icon"
             type="image/png"
-            href="images/favicon16.png"
+            href="static/images/favicon16.png"
             sizes="16x16"
           />
 

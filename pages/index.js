@@ -14,9 +14,9 @@ if (typeof window !== 'undefined') {
 
 export default () => {
   return [
-    <ThemeProvider theme={variables}>
+    <ThemeProvider theme={variables} key="ThemeProvider">
       <Header>
-        <img src="./images/me.gif" alt="Sequence of mugshots of me" />
+        <img src="/static/images/me.gif" alt="Sequence of mugshots of me" />
         <div>
           <Canvas>
             <h1> Murderlon is my rapper alias but I don't actually rap</h1>
