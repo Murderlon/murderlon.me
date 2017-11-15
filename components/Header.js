@@ -14,21 +14,21 @@ const StyledHeader = styled.header`
     min-width: 5em;
     min-height: 5em;
     border-radius: 50%;
-    box-shadow: -10px 10px 20px -10px var(--black);
+    box-shadow: -10px 10px 20px -10px ${props => props.theme.black};
   }
 
   @media screen and (min-width: 50em) {
-    header {
-      padding: 2.5em 0;
-      display: grid;
-      grid-template-columns: 1fr minmax(auto, 40rem) 2fr 1fr;
+    padding: 2.5em 0;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 40rem) 2fr 1fr;
+
+    img {
+      margin-bottom: 1em;
     }
+
     div {
       padding: 0;
       grid-column: 2/span 1;
-    }
-    img {
-      margin-bottom: 1em;
     }
   }
 `;
